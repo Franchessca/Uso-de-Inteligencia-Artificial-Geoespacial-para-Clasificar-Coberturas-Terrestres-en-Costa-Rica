@@ -1,11 +1,14 @@
 # logger_min.py
 import os, csv, json, platform, socket, getpass
+import psutil
 from datetime import datetime
+from pathlib import Path
 
-LOG_PATH = "experimentos_log.csv"
-COLUMNS = ["timestamp","script","algoritmo","dataset","clases_removidas","seed",
-           "n_train","n_test","n_features","num_classes",
-           "fit_seconds","pred_seconds","ms_per_sample","OA","F1_macro","system_info"]
+LOG_PATH = "registros_log.csv"
+COLUMNS = [ "timestamp","carpeta","script","algoritmo","dataset",
+    "clases_removidas","seed","n_train","n_test", "n_features","num_classes", 
+    "fit_seconds","pred_seconds","ms_per_sample", "OA","F1_macro","system_info"
+]
 
 try:
     import psutil
@@ -46,9 +49,18 @@ def _system_info():
 def log_row(**kwargs):
     """Escribe una fila en CSV; si algo falla, no detiene tu experimento."""
     try:
+        # deducir carpeta si no se pasa explícitamente
+        carpeta = kwargs.get("carpeta")
+        if not carpeta:
+            script = kwargs.get("script", "")
+            if script and "/" in script:
+                carpeta = Path(script).parent.name or "."
+            else:
+                carpeta = Path.cwd().name
         row = {
             "timestamp": datetime.now().isoformat(timespec="seconds"),
             "script": kwargs.get("script",""),
+            "carpeta": carpeta,
             "algoritmo": kwargs.get("algoritmo",""),
             "dataset": kwargs.get("dataset",""),
             "clases_removidas": ",".join(map(str, kwargs.get("clases_removidas", []))),
