@@ -5,7 +5,8 @@ from datetime import datetime
 from pathlib import Path
 
 ruta_carpeta_actual = os.getcwd()
-LOG_PATH  = os.path.join(ruta_carpeta_actual, "registros_log.csv")
+ruta_carpeta_raiz = os.path.dirname(ruta_carpeta_actual)
+LOG_PATH  = os.path.join(ruta_carpeta_raiz, "registros_log.csv")
 COLUMNS = [ "timestamp","carpeta","script","algoritmo","dataset",
     "clases_removidas","seed","n_train","n_test", "n_features","num_classes", 
     "fit_seconds","pred_seconds","ms_per_sample", "OA","F1_macro","system_info"
