@@ -1,5 +1,7 @@
 # Auto detect text files and perform LF normalization
 dataset/
 Pruebas/IGTD
+Experimentos/IGTD
 Pruebas/Resultados
+Experimentos/Resultados
 __pycache__
