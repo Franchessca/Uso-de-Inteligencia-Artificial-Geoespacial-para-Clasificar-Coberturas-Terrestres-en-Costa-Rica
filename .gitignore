@@ -5,3 +5,7 @@ Experimentos/IGTD
 Pruebas/Resultados
 Experimentos/Resultados
 __pycache__
+
+# Earth Engine
+**/.config/earthengine/credentials
+earthengine_private_key.json
