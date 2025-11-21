@@ -2,6 +2,7 @@
 dataset/
 Pruebas/IGTD
 Experimentos/IGTD
+Experimentos_adicionVariablesTopograficas/IGTD
 Pruebas/Resultados
 Experimentos/Resultados
 __pycache__
