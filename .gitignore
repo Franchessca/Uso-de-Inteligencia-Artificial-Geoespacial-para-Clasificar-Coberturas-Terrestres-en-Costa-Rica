@@ -6,6 +6,8 @@ Experimentos_adicionVariablesTopograficas/IGTD
 Pruebas/Resultados
 Experimentos/Resultados
 __pycache__
+GEE_API
+Experimentos_GEE
 
 # Earth Engine
 **/.config/earthengine/credentials
